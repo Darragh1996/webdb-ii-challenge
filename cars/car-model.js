@@ -14,8 +14,9 @@ function insertNewCar({ make, model, mileage, transmission, status }) {
   return db("cars").insert({ make, model, mileage, transmission, status });
 }
 
-function updateCar({ vin, model, mileage, transmission, status }) {
-  return db("posts")
+function updateCar({ vin, make, model, mileage, transmission, status }) {
+  console.log(vin, make, model, mileage, transmission, status);
+  return db("cars")
     .where({ vin })
     .update({ make, model, mileage, transmission, status });
 }

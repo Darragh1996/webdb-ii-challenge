@@ -32,4 +32,14 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:vin", (req, res) => {
+  Cars.updateCar({ ...req.body, vin: req.params.vin })
+    .then(updated => {
+      res.status(200).json(updated);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "something went wrong", error: err });
+    });
+});
+
 module.exports = router;
