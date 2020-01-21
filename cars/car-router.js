@@ -22,4 +22,14 @@ router.get("/:vin", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  Cars.insertNewCar(req.body)
+    .then(newCarVIN => {
+      res.status(200).json(newCarVIN);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "something went wrong" });
+    });
+});
+
 module.exports = router;
